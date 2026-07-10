@@ -1,5 +1,7 @@
 from tkinter import *
 from constants import *
+from keyboard_view import KeyboardView
+from mouse_view import MouseView
 class UI:
     def __init__(self,timer):
         self.timer=timer
@@ -17,8 +19,8 @@ class UI:
         Button(button_frame,text="Stop",width=10,command=self.stop).pack(side=LEFT,padx=5)
         self.canvas=Canvas(self.root,width=WINDOW_WIDTH-20,height=250,bg="white",highlightthickness=1)
         self.canvas.pack(pady=15)
-        self.canvas.create_text(WINDOW_WIDTH//2,40,text="Keyboard View (Coming Soon)",font=("Helvetica",18))
-        self.canvas.create_text(WINDOW_WIDTH//2,180,text="Mouse View (Coming Soon)",font=("Helvetica",18))
+        self.keyboard=KeyboardView(self.canvas)
+        self.mouse=MouseView(self.canvas)
         self.update()
     def start(self):
         self.timer.start()
